@@ -3,12 +3,14 @@ const prev = document.getElementById("prev-month");
 const next = document.getElementById("next-month");
 const calendarDates = document.getElementById("calendar-dates");
 
-// Set current date globally
+// Load stored data or initialise
+let selectedDates = JSON.parse(localStorage.getItem("selectedDates")) || {};
 let currentDate = new Date();
 
 function generateCalendar(date = currentDate) {
   let year = date.getFullYear();
   let month = date.getMonth();
+  let monthKey = `${year}-${month}`;
 
   // Set month and year in header
   monthYear.textContent = new Intl.DateTimeFormat("en-GB", {
@@ -38,19 +40,27 @@ function generateCalendar(date = currentDate) {
     div.textContent = i;
     div.classList.add("date");
 
-    // Add click event to add/remove icon
+    // Restore checkmark if saved in Local Storage
+    if (selectedDates[monthKey] && selectedDates[monthKey].includes(i)) {
+      addCheckmark(div);
+    }
+
+    // Click event to add/remove checkmark
     div.addEventListener("click", function () {
-      // Remove existing icon if present
-      let existingIcon = div.querySelector("span");
-      if (existingIcon) {
-        div.removeChild(existingIcon); // Remove icon if already present
+      if (!selectedDates[monthKey]) selectedDates[monthKey] = []; // Ensure array exists
+
+      if (selectedDates[monthKey].includes(i)) {
+        removeCheckmark(div);
+        selectedDates[monthKey] = selectedDates[monthKey].filter(
+          (day) => day !== i
+        );
       } else {
-        let icon = document.createElement("span");
-        icon.innerHTML = "✔️"; // You can use "📍" instead
-        icon.style.display = "block";
-        icon.style.fontSize = "14px";
-        div.appendChild(icon);
+        addCheckmark(div);
+        selectedDates[monthKey].push(i);
       }
+
+      localStorage.setItem("selectedDates", JSON.stringify(selectedDates));
+      console.log("Saved to Local Storage:", selectedDates); // Debugging
     });
 
     calendarDates.appendChild(div);
@@ -66,6 +76,21 @@ function generateCalendar(date = currentDate) {
     div.classList.add("date", "inactive");
     calendarDates.appendChild(div);
   }
+}
+
+// Function to add a checkmark
+function addCheckmark(div) {
+  let icon = document.createElement("span");
+  icon.innerHTML = "✔️";
+  icon.style.display = "block";
+  icon.style.fontSize = "14px";
+  div.appendChild(icon);
+}
+
+// Function to remove a checkmark
+function removeCheckmark(div) {
+  let existingIcon = div.querySelector("span");
+  if (existingIcon) div.removeChild(existingIcon);
 }
 
 // Event listeners for navigation buttons
