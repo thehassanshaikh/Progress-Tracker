@@ -1,52 +1,82 @@
-/*variables*/
+/* Variables */
 :root {
-    --white: #fff;
-    --main: #eaedf0;
-    --accent: #0041ff;
-    --accent-2: #ebedf0;
-  }
-  
-
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  --white: #fff;
+  --main: #eaedf0;
+  --accent: #1f57ff;
+  --accent-2: #ebedf0;
 }
 
-
-body{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+/* Reset styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* 🔹 Ensures padding/margins don’t increase size */
+  overflow-x: hidden; /* 🔹 Apply globally to prevent unwanted horizontal scroll */
 }
 
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background-color: var(--accent-2);
+  padding: 10px; /* Prevent overflow on smaller screens */
+  overflow-x: hidden; /* 🔹 Prevent horizontal scrolling */
+  width: 100%;
+}
+
+/* Calendar container */
 .calendar-container {
-    padding: 1rem;
-    background: var(--main);
-    border-radius: 1rem;
+  padding: 1rem;
+  background: var(--main);
+  border-radius: 1rem;
+  width: 100%;
+  max-width: 400px; /* Ensures it stays within screen limits */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden; /* 🔹 Prevent any internal overflow */
 }
 
+
+/* Header section */
 .calendar-header {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
 }
 
+#month-year {
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+/* Navigation buttons */
 .btn {
-    padding: 0 16px;
-    background: var(--accent);
-    color: var(--white);
-    border: none;
-    border-radius: 0.5rem;
+  padding: 6px 12px;
+  background: var(--accent);
+  color: var(--white);
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-size: 1rem;
 }
 
-.dates, .week{
+.btn:hover {
+  background: #003ef7;
+  transition: ease;
+  animation-duration: 500ms;
+}
+
+/* Weekdays and dates */
+.dates,
+.week {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    gap: 1rem;
-    margin: auto;
-    justify-content: space-between;
+    gap: 5px;
+    text-align: center;
+    max-width: 100%; /* 🔹 Prevents grid from overflowing */
+    overflow: hidden;
 }
 
 .week div,
@@ -56,21 +86,65 @@ body{
   justify-content: center;
   align-items: center;
   height: 3rem;
-  width: 3em;
-  border-radius: 100%;
+  width: 3rem;
+  border-radius: 50%;
+  font-size: 1rem;
 }
 
+/* Hover effect */
 .dates div:hover {
-    background: var(--accent);
-    color: var(--white);
-    cursor: pointer;
-    transition: ease;
-    transition-duration: 500ms;
-  }
-  .week div {
-    font-weight: 400;
- }
+  background: var(--accent);
+  color: var(--white);
+  cursor: pointer;
+  transition: ease;
+  transition-duration: 400ms;
+}
 
-  .inactive{
-    opacity: 0.5;
+/* Weekday labels */
+.week div {
+  font-weight: 600;
+  opacity: 0.8;
+  font-size: 1rem;
+}
+
+/* Inactive dates (previous & next month) */
+.inactive {
+  opacity: 0.5;
+}
+
+/* Highlight the current day */
+.today {
+  background: var(--accent);
+  color: var(--white);
+  font-weight: bold;
+  border-radius: 50%;
+}
+
+/* Make calendar fully responsive */
+@media (max-width: 480px) {
+  .calendar-container {
+      padding: 0.8rem;
+      max-width: 90%;
   }
+
+  .calendar-header {
+      font-size: 1.2rem;
+  }
+
+  .btn {
+      padding: 5px 10px;
+      font-size: 0.9rem;
+  }
+
+  .dates div,
+  .week div {
+      height: 2.5rem;
+      width: 2.5rem;
+      font-size: 0.9rem;
+  }
+
+  #month-year {
+    font-size: 1rem;
+    font-weight: 500;
+}
+}

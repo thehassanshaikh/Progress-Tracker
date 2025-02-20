@@ -12,6 +12,11 @@ function generateCalendar(date = currentDate) {
   let month = date.getMonth();
   let monthKey = `${year}-${month}`;
 
+  let today = new Date();
+  let todayDate = today.getDate();
+  let todayMonth = today.getMonth();
+  let todayYear = today.getFullYear();
+
   // Set month and year in header
   monthYear.textContent = new Intl.DateTimeFormat("en-GB", {
     month: "long",
@@ -40,6 +45,11 @@ function generateCalendar(date = currentDate) {
     div.textContent = i;
     div.classList.add("date");
 
+    // Highlight today's date
+    if (i === todayDate && month === todayMonth && year === todayYear) {
+      div.classList.add("today");
+    }
+
     // Restore checkmark if saved in Local Storage
     if (selectedDates[monthKey] && selectedDates[monthKey].includes(i)) {
       addCheckmark(div);
@@ -60,7 +70,6 @@ function generateCalendar(date = currentDate) {
       }
 
       localStorage.setItem("selectedDates", JSON.stringify(selectedDates));
-      console.log("Saved to Local Storage:", selectedDates); // Debugging
     });
 
     calendarDates.appendChild(div);
