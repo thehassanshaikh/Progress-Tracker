@@ -16,6 +16,7 @@
 
 body {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
@@ -147,4 +148,38 @@ body {
     font-size: 1rem;
     font-weight: 500;
 }
+}
+
+/* Streaks container */
+.streaks-container {
+  display: flex
+;
+  border: 2px solid;
+  padding: 1rem;
+  flex-direction: column;
+}
+
+.streaks-data {
+  display: flex
+;
+  padding: 0.5rem;
+}
+.streaks-title {
+  display: flex
+;
+}
+.current-streak-con {
+  padding: 0 0.5rem;
+}
+
+.current-streak {
+  padding: 0.5rem 0;
+}
+.streak {
+  margin-bottom: 10px;
+}
+
+.streak span {
+  display: inline-block;
+  margin-right: 10px;
 }

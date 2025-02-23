@@ -2,6 +2,8 @@ const monthYear = document.getElementById("month-year");
 const prev = document.getElementById("prev-month");
 const next = document.getElementById("next-month");
 const calendarDates = document.getElementById("calendar-dates");
+const currentStreakElement = document.getElementById("current-streak");
+const longestStreakElement = document.getElementById("longest-streak");
 
 // Load stored data or initialise
 let selectedDates = JSON.parse(localStorage.getItem("selectedDates")) || {};
@@ -70,6 +72,7 @@ function generateCalendar(date = currentDate) {
       }
 
       localStorage.setItem("selectedDates", JSON.stringify(selectedDates));
+      updateStreaks();
     });
 
     calendarDates.appendChild(div);
@@ -85,12 +88,14 @@ function generateCalendar(date = currentDate) {
     div.classList.add("date", "inactive");
     calendarDates.appendChild(div);
   }
+
+  updateStreaks();
 }
 
 // Function to add a checkmark
 function addCheckmark(div) {
   let icon = document.createElement("span");
-  icon.innerHTML = "✔️";
+  icon.innerHTML = "✅";
   icon.style.display = "block";
   icon.style.fontSize = "14px";
   div.appendChild(icon);
@@ -98,8 +103,37 @@ function addCheckmark(div) {
 
 // Function to remove a checkmark
 function removeCheckmark(div) {
-  let existingIcon = div.querySelector("span");
+  if(confirm("Are you sure you want to remove the checkmark")){
+    let existingIcon = div.querySelector("span");
   if (existingIcon) div.removeChild(existingIcon);
+  }
+}
+
+// Function to calculate streaks
+function updateStreaks() {
+  let dates = Object.values(selectedDates).flat().sort((a, b) => a - b);
+  let currentStreak = 0;
+  let longestStreak = 0;
+  let previousDate = null;
+
+  dates.forEach(date => {
+    if (previousDate === null || date === previousDate + 1) {
+      currentStreak++;
+    } else {
+      if (currentStreak > longestStreak) {
+        longestStreak = currentStreak;
+      }
+      currentStreak = 1;
+    }
+    previousDate = date;
+  });
+
+  if (currentStreak > longestStreak) {
+    longestStreak = currentStreak;
+  }
+
+  currentStreakElement.textContent = `${currentStreak} days`;
+  longestStreakElement.textContent = `${longestStreak} days`;
 }
 
 // Event listeners for navigation buttons
