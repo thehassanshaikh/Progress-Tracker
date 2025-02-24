@@ -4,6 +4,8 @@ const next = document.getElementById("next-month");
 const calendarDates = document.getElementById("calendar-dates");
 const currentStreakElement = document.getElementById("current-streak");
 const longestStreakElement = document.getElementById("longest-streak");
+const thisMonthCountElement = document.getElementById("this-month-count");
+const thisYearCountElement = document.getElementById("this-year-count");
 
 // Load stored data or initialise
 let selectedDates = JSON.parse(localStorage.getItem("selectedDates")) || {};
@@ -103,20 +105,22 @@ function addCheckmark(div) {
 
 // Function to remove a checkmark
 function removeCheckmark(div) {
-  if(confirm("Are you sure you want to remove the checkmark")){
+  if (confirm("Are you sure you want to remove the checkmark")) {
     let existingIcon = div.querySelector("span");
-  if (existingIcon) div.removeChild(existingIcon);
+    if (existingIcon) div.removeChild(existingIcon);
   }
 }
 
 // Function to calculate streaks
 function updateStreaks() {
-  let dates = Object.values(selectedDates).flat().sort((a, b) => a - b);
+  let dates = Object.values(selectedDates)
+    .flat()
+    .sort((a, b) => a - b);
   let currentStreak = 0;
   let longestStreak = 0;
   let previousDate = null;
 
-  dates.forEach(date => {
+  dates.forEach((date) => {
     if (previousDate === null || date === previousDate + 1) {
       currentStreak++;
     } else {
@@ -134,6 +138,46 @@ function updateStreaks() {
 
   currentStreakElement.textContent = `${currentStreak} days`;
   longestStreakElement.textContent = `${longestStreak} days`;
+
+  // Calculate and update this month's count
+  updateThisMonthCount();
+  // Calculate and update this year's count
+  updateThisYearCount();
+}
+
+// Function to update this month's count
+function updateThisMonthCount() {
+  let today = new Date();
+  let year = today.getFullYear();
+  let month = today.getMonth();
+  let monthKey = `${year}-${month}`;
+
+  let markedDays = selectedDates[monthKey] ? selectedDates[monthKey].length : 0;
+  let totalDays = new Date(year, month + 1, 0).getDate();
+
+  thisMonthCountElement.textContent = `${markedDays}/${totalDays} Days`;
+}
+
+// Function to update this year's count
+function updateThisYearCount() {
+  let today = new Date();
+  let year = today.getFullYear();
+  let markedDays = 0;
+  let totalDays = isLeapYear(year) ? 366 : 365;
+
+  for (let month = 0; month < 12; month++) {
+    let monthKey = `${year}-${month}`;
+    if (selectedDates[monthKey]) {
+      markedDays += selectedDates[monthKey].length;
+    }
+  }
+
+  thisYearCountElement.textContent = `${markedDays}/${totalDays} Days`;
+}
+
+// Helper function to check if a year is a leap year
+function isLeapYear(year) {
+  return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
 }
 
 // Event listeners for navigation buttons

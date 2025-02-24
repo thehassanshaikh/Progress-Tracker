@@ -152,21 +152,28 @@ body {
 
 /* Streaks container */
 .streaks-container {
-  display: flex
-;
-  border: 2px solid;
   padding: 1rem;
-  flex-direction: column;
+  background: var(--main);
+  border-radius: 1rem;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  margin-top: 1rem;
 }
 
 .streaks-data {
-  display: flex
-;
-  padding: 0.5rem;
+  display: flex;
+  justify-content: space-between;
 }
-.streaks-title {
-  display: flex
-;
+.streaks-title-con {
+  display: flex;
+}
+
+p.streaks-title {
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0 10px;
 }
 .current-streak-con {
   padding: 0 0.5rem;
@@ -182,4 +189,8 @@ body {
 .streak span {
   display: inline-block;
   margin-right: 10px;
+}
+
+.current-streak span, .this-month-streak span {
+  font-size: 0.8rem;
 }
