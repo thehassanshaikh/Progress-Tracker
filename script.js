@@ -136,8 +136,8 @@ function updateStreaks() {
     longestStreak = currentStreak;
   }
 
-  currentStreakElement.textContent = `${currentStreak} days`;
-  longestStreakElement.textContent = `${longestStreak} days`;
+  currentStreakElement.textContent = `${currentStreak} Days 🔥`;
+  longestStreakElement.textContent = `${longestStreak} Days 🏆`;
 
   // Calculate and update this month's count
   updateThisMonthCount();
@@ -155,7 +155,7 @@ function updateThisMonthCount() {
   let markedDays = selectedDates[monthKey] ? selectedDates[monthKey].length : 0;
   let totalDays = new Date(year, month + 1, 0).getDate();
 
-  thisMonthCountElement.textContent = `${markedDays}/${totalDays} Days`;
+  thisMonthCountElement.textContent = `${markedDays}/${totalDays} Days 📅`;
 }
 
 // Function to update this year's count
@@ -172,7 +172,7 @@ function updateThisYearCount() {
     }
   }
 
-  thisYearCountElement.textContent = `${markedDays}/${totalDays} Days`;
+  thisYearCountElement.textContent = `${markedDays}/${totalDays} Days 📈`;
 }
 
 // Helper function to check if a year is a leap year

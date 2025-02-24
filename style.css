@@ -194,3 +194,7 @@ p.streaks-title {
 .current-streak span, .this-month-streak span {
   font-size: 0.8rem;
 }
+
+.text-grey{
+  color: grey;
+}
