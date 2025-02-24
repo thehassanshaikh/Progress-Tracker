@@ -60,21 +60,26 @@ function generateCalendar(date = currentDate) {
     }
 
     // Click event to add/remove checkmark
-    div.addEventListener("click", function () {
+    div.addEventListener("click", function (event) {
       if (!selectedDates[monthKey]) selectedDates[monthKey] = []; // Ensure array exists
 
-      if (selectedDates[monthKey].includes(i)) {
-        removeCheckmark(div);
-        selectedDates[monthKey] = selectedDates[monthKey].filter(
-          (day) => day !== i
-        );
+      const isChecked = selectedDates[monthKey].includes(i);
+
+      if (isChecked) {
+        if (confirm("Are you sure you want to remove the checkmark?")) {
+          removeCheckmark(div);
+          selectedDates[monthKey] = selectedDates[monthKey].filter(
+            (day) => day !== i
+          );
+          localStorage.setItem("selectedDates", JSON.stringify(selectedDates));
+          updateStreaks();
+        }
       } else {
         addCheckmark(div);
         selectedDates[monthKey].push(i);
+        localStorage.setItem("selectedDates", JSON.stringify(selectedDates));
+        updateStreaks();
       }
-
-      localStorage.setItem("selectedDates", JSON.stringify(selectedDates));
-      updateStreaks();
     });
 
     calendarDates.appendChild(div);
@@ -105,9 +110,9 @@ function addCheckmark(div) {
 
 // Function to remove a checkmark
 function removeCheckmark(div) {
-  if (confirm("Are you sure you want to remove the checkmark")) {
-    let existingIcon = div.querySelector("span");
-    if (existingIcon) div.removeChild(existingIcon);
+  let existingIcon = div.querySelector("span");
+  if (existingIcon) {
+    div.removeChild(existingIcon);
   }
 }
 
