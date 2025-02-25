@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Progress Tracker - Track Your Habits</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+    <!-- Header Section -->
+    <header class="landing-header">
+        <h1>Progress Tracker</h1>
+        <p>Track your daily habits, build streaks, and achieve your goals with ease.</p>
+        <a href="#progress-tracker" class="cta-button">Start Tracking Now</a>
+    </header>
+
+    <!-- Features Section -->
+    <section class="features">
+        <h2>Why Use Progress Tracker?</h2>
+        <div class="feature-cards">
+            <div class="card">
+                <h3>📅 Calendar View</h3>
+                <p>Visualize your progress with an interactive calendar.</p>
+            </div>
+            <div class="card">
+                <h3>🔥 Streak Tracking</h3>
+                <p>Track your current and longest streaks to stay motivated.</p>
+            </div>
+            <div class="card">
+                <h3>✅ Easy to Use</h3>
+                <p>Simply click on dates to mark your progress.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- How to Use Section -->
+    <section class="how-to-use">
+        <h2>How to Use Progress Tracker</h2>
+        <div class="steps">
+            <div class="step">
+                <span>1</span>
+                <p>Open the calendar and navigate to the desired month.</p>
+            </div>
+            <div class="step">
+                <span>2</span>
+                <p>Click on a date to mark your progress with a checkmark.</p>
+            </div>
+            <div class="step">
+                <span>3</span>
+                <p>Track your streaks and see your progress over time.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="cta">
+        <h2>Ready to Build Better Habits?</h2>
+        <a href="#progress-tracker" class="cta-button">Get Started</a>
+    </section>
+
+    <!-- Progress Tracker Section -->
+    <section id="progress-tracker" class="progress-tracker">
+        <div class="calendar-container">
+            <div class="calendar-header">
+                <button id="prev-month" class="btn">
+                    < Prev</button>
+                        <h2 id="month-year"></h2>
+                        <button id="next-month" class="btn">Next ></button>
+            </div>
+            <div class="week">
+                <div>Sun</div>
+                <div>Mon</div>
+                <div>Tue</div>
+                <div>Wed</div>
+                <div>Thu</div>
+                <div>Fri</div>
+                <div>Sat</div>
+            </div>
+
+            <div class="dates" id="calendar-dates"></div>
+        </div>
+
+        <!-- Streaks Section -->
+        <div class="streaks-container">
+            <div class="streaks-title-con">
+                <span class="light-icon">⚡️</span>
+                <p class="streaks-title">Streaks</p>
+            </div>
+            <div class="streaks-data">
+                <div class="current-streak-con">
+                    <div class="current-streak">
+                        <p>Current streaks</p>
+                        <p id="current-streak" class="text-grey">0 <span>Days</span></p>
+                    </div>
+                    <div class="this-month-streak">
+                        <p>This month streak</p>
+                        <p id="this-month-count" class="text-grey">0/31 <span>Days</span></p>
+                    </div>
+                </div>
+                <hr>
+                <div class="longest-streak-con">
+                    <div class="current-streak">
+                        <p>Longest streaks</p>
+                        <p id="longest-streak" class="text-grey">0 <span>Days</span></p>
+                    </div>
+                    <div class="this-month-streak">
+                        <p>This year Streak</p>
+                        <p id="this-year-count" class="text-grey">0/365 <span>Days</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <p>© 2023 Progress Tracker. Built with ❤️ by [Your Name].</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

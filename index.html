@@ -10,6 +10,17 @@
 
 <body>
     <div class="calendar-container">
+        <div class="tabs-container">
+            <div class="tabs" id="tabs">
+                <!-- Default tab -->
+                <div class="tab active" data-tab="default">
+                    Default
+                    <span class="close-tab">x</span>
+                </div>
+            </div>
+            <button id="add-tab" class="btn">+ Add Tab</button>
+        </div>
+        <!-- calender header -->
         <div class="calendar-header">
             <button id="prev-month" class="btn">
                 < Prev</button>
@@ -28,18 +39,6 @@
 
         <div class="dates" id="calendar-dates"></div>
     </div>
-    <!-- Add this section for streaks -->
-    <!-- <div class="streaks-container">
-        <div class="streak">
-            <span>Current Streak:</span>
-            <span id="current-streak">0 days</span>
-        </div>
-        <div class="streak">
-            <span>Longest Streak:</span>
-            <span id="longest-streak">0 days</span>
-        </div>
-    </div> -->
-
     <div class="streaks-container">
         <div class="streaks-title-con">
             <span class="light-icon">⚡️</span>
