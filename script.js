@@ -72,17 +72,20 @@ function generateCalendar(date = currentDate) {
       }
 
       if (tabsData[currentTab].selectedDates[monthKey].includes(i)) {
-        removeCheckmark(div);
-        tabsData[currentTab].selectedDates[monthKey] = tabsData[
-          currentTab
-        ].selectedDates[monthKey].filter((day) => day !== i);
+        // Only remove the checkmark if the user confirms
+        if (removeCheckmark(div)) {
+          tabsData[currentTab].selectedDates[monthKey] = tabsData[
+            currentTab
+          ].selectedDates[monthKey].filter((day) => day !== i);
+          localStorage.setItem("tabsData", JSON.stringify(tabsData));
+          updateStreaks();
+        }
       } else {
         addCheckmark(div);
         tabsData[currentTab].selectedDates[monthKey].push(i);
+        localStorage.setItem("tabsData", JSON.stringify(tabsData));
+        updateStreaks();
       }
-
-      localStorage.setItem("tabsData", JSON.stringify(tabsData));
-      updateStreaks();
     });
 
     calendarDates.appendChild(div);
@@ -113,10 +116,14 @@ function addCheckmark(div) {
 
 // Function to remove a checkmark
 function removeCheckmark(div) {
-  let existingIcon = div.querySelector("span");
-  if (existingIcon) {
-    div.removeChild(existingIcon);
+  if (confirm("Are you sure you want to remove the checkmark?")) {
+    let existingIcon = div.querySelector("span");
+    if (existingIcon) {
+      div.removeChild(existingIcon);
+    }
+    return true; // Return true if the checkmark was removed
   }
+  return false; // Return false if the user canceled the action
 }
 
 // Function to calculate streaks
