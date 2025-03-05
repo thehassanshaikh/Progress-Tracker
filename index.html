@@ -4,74 +4,164 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Progress Tracker</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Habit Tracker - Build Better Habits</title>
+    <link rel="stylesheet" href="main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
 <body>
-    <div class="heading-container">
-        <h1>Keep Track of your habit's</h1>
-    </div>
-    <div class="calendar-container">
-        <div class="tabs-container">
-            <div class="tabs" id="tabs">
-                <!-- Default tab -->
-                <div class="tab active" data-tab="default">
-                    Default
-                    <span class="close-tab">✖</span>
-                </div>
-            </div>
-            <button id="add-tab" class="btn">+</button>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">Habit Tracker</h1>
+            <nav class="nav">
+                <button class="nav-toggle" aria-label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul class="nav-menu">
+                    <li><a href="#features" class="nav-link">Features</a></li>
+                    <li><a href="#how-it-works" class="nav-link">How It Works</a></li>
+                    <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
+                    <li><a href="/calender.html" class="nav-link cta-button">Get Started</a></li>
+                </ul>
+            </nav>
         </div>
-        <!-- calender header -->
-        <div class="calendar-header">
-            <button id="prev-month" class="btn">
-                < Prev</button>
-                    <h2 id="month-year"></h2>
-                    <button id="next-month" class="btn">Next ></button>
-        </div>
-        <div class="week">
-            <div>Sun</div>
-            <div>Mon</div>
-            <div>Tue</div>
-            <div>Wed</div>
-            <div>Thu</div>
-            <div>Fri</div>
-            <div>Sat</div>
-        </div>
+    </header>
 
-        <div class="dates" id="calendar-dates"></div>
-    </div>
-    <div class="streaks-container">
-        <div class="streaks-title-con">
-            <span class="light-icon">⚡️</span>
-            <p class="streaks-title">Streaks</p>
-        </div>
-        <div class="streaks-data">
-            <div class="current-streak-con">
-                <div class="current-streak">
-                    <p>Current streaks</p>
-                    <p id="current-streak" class="text-grey">15 <span>Days</span></p>
-                </div>
-                <div class="this-month-streak">
-                    <p>This month streak</p>
-                    <p id="this-month-count" class="text-grey">15/31 <span>Days</span></p>
-                </div>
-            </div>
-            <hr>
-            <div class="longest-streak-con">
-                <div class="current-streak">
-                    <p>Longest streaks</p>
-                    <p id="longest-streak" class="text-grey">15 <span>Days</span></p>
-                </div>
-                <div class="this-month-streak">
-                    <p>This year Streak</p>
-                    <p id="this-year-count" class="text-grey">15/31 <span>Days</span></p>
-                </div>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h2 class="hero-title">Build Better Habits, One Day at a Time</h2>
+                <p class="hero-subtitle">Track your progress, stay consistent, and achieve your goals with our simple
+                    and elegant habit tracker.</p>
+                <a href="/calender.html" class="cta-button">Start Tracking Now</a>
             </div>
         </div>
-    </div>
-    <script src="script.js"></script>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">Why Choose Habit Tracker?</h2>
+            <div class="features-grid">
+                <div class="feature">
+                    <span class="feature-icon">📅</span>
+                    <h3 class="feature-title">Daily Tracking</h3>
+                    <p class="feature-description">Mark your habits daily and build consistency over time.</p>
+                </div>
+                <div class="feature">
+                    <span class="feature-icon">🔥</span>
+                    <h3 class="feature-title">Streaks</h3>
+                    <p class="feature-description">Track your current and longest streaks to stay motivated.</p>
+                </div>
+                <div class="feature">
+                    <span class="feature-icon">📊</span>
+                    <h3 class="feature-title">Analytics</h3>
+                    <p class="feature-description">Visualize your progress with monthly and yearly stats.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="how-it-works" class="how-it-works">
+        <div class="container">
+            <h2 class="section-title">How It Works</h2>
+            <div class="steps-grid">
+                <div class="step">
+                    <div class="step-icon">1</div>
+                    <h3 class="step-title">Set Your Habits</h3>
+                    <p class="step-description">Choose the habits you want to track and set your goals.</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">2</div>
+                    <h3 class="step-title">Mark Your Progress</h3>
+                    <p class="step-description">Mark your habits daily on the calendar to track your progress.</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">3</div>
+                    <h3 class="step-title">Stay Consistent</h3>
+                    <p class="step-description">Use streaks and analytics to stay motivated and consistent.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section (Carousel) -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <h2 class="section-title">What Users Are Saying</h2>
+            <div class="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="testimonial-card">
+                            <img src="https://via.placeholder.com/100" alt="User 1" class="testimonial-img">
+                            <p class="testimonial-text">"This habit tracker has completely changed my life. I’ve never
+                                been so consistent with my goals!"</p>
+                            <p class="testimonial-author">— Sarah L.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="testimonial-card">
+                            <img src="https://via.placeholder.com/100" alt="User 2" class="testimonial-img">
+                            <p class="testimonial-text">"The calendar and streaks make it so easy to stay on track.
+                                Highly recommend!"</p>
+                            <p class="testimonial-author">— John D.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="testimonial-card">
+                            <img src="https://via.placeholder.com/100" alt="User 3" class="testimonial-img">
+                            <p class="testimonial-text">"Simple, elegant, and effective. Perfect for building better
+                                habits."</p>
+                            <p class="testimonial-author">— Emily R.</p>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control prev" onclick="moveSlide(-1)">&#10094;</button>
+                <button class="carousel-control next" onclick="moveSlide(1)">&#10095;</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section id="get-started" class="cta">
+        <div class="container">
+            <h2 class="cta-title">Ready to Build Better Habits?</h2>
+            <p class="cta-subtitle">Start tracking your habits today and see the difference it makes.</p>
+            <a href="/calender.html" class="cta-button">Get Started</a>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="container">
+            <p class="footer-text">&copy; 2025 Habit Tracker By <a href="https://www.linkedin.com/in/thehassanshaikh/">
+                    Hassan Shaikh.</a> All rights reserved.</p>
+        </div>
+    </footer>
+    <script>
+        // Navbar Toggle for Mobile
+        const navToggle = document.querySelector(".nav-toggle");
+        const navMenu = document.querySelector(".nav-menu");
+
+        navToggle.addEventListener("click", () => {
+            navMenu.classList.toggle("active");
+        });
+
+        // Carousel Functionality
+        let currentSlide = 0;
+
+        function moveSlide(direction) {
+            const carouselInner = document.querySelector(".carousel-inner");
+            const slides = document.querySelectorAll(".carousel-item");
+            const totalSlides = slides.length;
+
+            currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+            carouselInner.style.transform = `translateX(-${currentSlide * 100}%)`;
+        }
+    </script>
 </body>
 
 </html>

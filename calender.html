@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Progress Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="heading-container">
+        <h1>Keep Track of your habit's</h1>
+    </div>
+    <div class="calendar-container">
+        <div class="tabs-container">
+            <div class="tabs" id="tabs">
+                <!-- Default tab -->
+                <div class="tab active" data-tab="default">
+                    Default
+                    <span class="close-tab">✖</span>
+                </div>
+            </div>
+            <button id="add-tab" class="btn">+</button>
+        </div>
+        <!-- calender header -->
+        <div class="calendar-header">
+            <button id="prev-month" class="btn">
+                < Prev</button>
+                    <h2 id="month-year"></h2>
+                    <button id="next-month" class="btn">Next ></button>
+        </div>
+        <div class="week">
+            <div>Sun</div>
+            <div>Mon</div>
+            <div>Tue</div>
+            <div>Wed</div>
+            <div>Thu</div>
+            <div>Fri</div>
+            <div>Sat</div>
+        </div>
+
+        <div class="dates" id="calendar-dates"></div>
+    </div>
+    <div class="streaks-container">
+        <div class="streaks-title-con">
+            <span class="light-icon">⚡️</span>
+            <p class="streaks-title">Streaks</p>
+        </div>
+        <div class="streaks-data">
+            <div class="current-streak-con">
+                <div class="current-streak">
+                    <p>Current streaks</p>
+                    <p id="current-streak" class="text-grey">15 <span>Days</span></p>
+                </div>
+                <div class="this-month-streak">
+                    <p>This month streak</p>
+                    <p id="this-month-count" class="text-grey">15/31 <span>Days</span></p>
+                </div>
+            </div>
+            <hr>
+            <div class="longest-streak-con">
+                <div class="current-streak">
+                    <p>Longest streaks</p>
+                    <p id="longest-streak" class="text-grey">15 <span>Days</span></p>
+                </div>
+                <div class="this-month-streak">
+                    <p>This year Streak</p>
+                    <p id="this-year-count" class="text-grey">15/31 <span>Days</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

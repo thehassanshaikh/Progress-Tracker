@@ -84,6 +84,7 @@ header .container {
 
 .cta-button:hover {
     background-color: var(--primary-hover);
+    color: white;
 }
 
 .nav-toggle {
